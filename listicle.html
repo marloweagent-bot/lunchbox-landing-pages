@@ -3,75 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7 Reasons Festival-Goers Are Switching to Anti-Theft Packs | Lunchbox</title>
+  <meta name="theme-color" content="#0A0A0A">
+  <title>7 Reasons Festival-Goers Are Switching | Lunchbox Packs</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Page-specific animations */
-    .counter {
-      display: inline-block;
-      font-size: inherit;
-      font-weight: inherit;
+    .reason {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--border);
     }
     
-    .icon-animate {
-      display: inline-block;
-      animation: float 2s ease-in-out infinite;
+    .reason:last-child {
+      border-bottom: none;
     }
     
-    .reason-visual {
-      height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      background: linear-gradient(135deg, var(--light) 0%, #e8e8e8 100%);
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .reason-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
-      animation: shimmer 3s infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    
-    .sticky-cta {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--black);
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      z-index: 100;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    
-    .sticky-cta.visible {
-      transform: translateY(0);
-    }
-    
-    .sticky-cta__text {
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .sticky-cta__price {
-      color: var(--orange);
+    .reason__number {
+      font-size: clamp(4rem, 15vw, 8rem);
       font-weight: 700;
+      line-height: 0.8;
+      background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.3;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .reason h3 {
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .reason p {
+      margin-bottom: var(--space-sm);
+    }
+    
+    .reason__highlight {
+      color: var(--purple-light);
+      font-weight: 600;
+      font-size: var(--font-size-small);
+    }
+    
+    .reason__visual {
+      height: 180px;
+      background: var(--dark-mid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-top: var(--space-md);
+    }
+    
+    .inline-cta {
+      background: var(--dark-mid);
+      border: 1px solid var(--border);
+      padding: var(--space-md);
+      margin: var(--space-lg) 0;
+      text-align: center;
+    }
+    
+    .inline-cta p {
+      margin-bottom: var(--space-sm);
+      color: var(--white);
+      font-weight: 600;
+    }
+    
+    .comparison {
+      overflow-x: auto;
+      margin: var(--space-lg) 0;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .comparison table {
+      width: 100%;
+      min-width: 500px;
+      border-collapse: collapse;
+    }
+    
+    .comparison th,
+    .comparison td {
+      padding: var(--space-sm);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--font-size-small);
+    }
+    
+    .comparison th {
+      background: var(--dark-mid);
+      color: var(--white);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .comparison th:last-child {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--blue-dark) 100%);
+    }
+    
+    .comparison td {
+      color: var(--gray);
+    }
+    
+    .comparison .check {
+      color: var(--purple-light);
+      font-weight: 700;
+    }
+    
+    .comparison .cross {
+      color: var(--gray);
+      opacity: 0.5;
+    }
+    
+    @media (min-width: 768px) {
+      .reason {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+        align-items: center;
+      }
+      
+      .reason:nth-child(even) {
+        direction: rtl;
+      }
+      
+      .reason:nth-child(even) > * {
+        direction: ltr;
+      }
+      
+      .reason__visual {
+        margin-top: 0;
+        height: 220px;
+      }
     }
   </style>
 </head>
@@ -80,173 +143,144 @@
 
   <!-- Hero -->
   <section class="hero">
+    <div class="orb orb--purple"></div>
+    <div class="orb orb--blue"></div>
     <div class="container">
-      <div class="hero__content">
-        <span class="hero__badge">Festival Season 2026</span>
-        <h1>7 reasons festival-goers are switching to anti-theft packs</h1>
-        <p class="hero__text">Over 2 million ravers have made the switch. Here's why you should too.</p>
-        <a href="#reasons" class="btn btn--primary btn--large">show me why →</a>
-      </div>
-    </div>
-    <div class="wave"></div>
-  </section>
-
-  <!-- Social Proof Bar -->
-  <section class="section--blue" style="padding: 2rem 0;">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat">
-          <div class="stat__number"><span class="counter" data-target="2.1">0</span>M+</div>
-          <div class="stat__label">Happy Ravers</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number"><span class="counter" data-target="4.9">0</span>★</div>
-          <div class="stat__label">Average Rating</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number"><span class="counter" data-target="500">0</span>+</div>
-          <div class="stat__label">Festivals Approved</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number"><span class="counter" data-target="0">0</span></div>
-          <div class="stat__label">Thefts Reported</div>
-        </div>
-      </div>
+      <span class="hero__badge animate-on-scroll">Festival Season 2026</span>
+      <h1 class="animate-on-scroll">7 reasons festival-goers are switching to anti-theft packs</h1>
+      <p class="hero__text animate-on-scroll">Over 2 million ravers have made the switch. Here's why you should too.</p>
+      <a href="#reasons" class="btn btn--primary animate-on-scroll">show me why →</a>
     </div>
   </section>
 
-  <!-- Reasons List -->
-  <section id="reasons" style="padding-top: 4rem;">
+  <!-- Stats Bar -->
+  <section style="padding: var(--space-lg) 0;">
     <div class="container">
+      <div class="stats-grid animate-on-scroll">
+        <div class="stat">
+          <div class="stat__number">2.1M+</div>
+          <div class="stat__label">Packs Sold</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">4.9★</div>
+          <div class="stat__label">Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">500+</div>
+          <div class="stat__label">Venues</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">0</div>
+          <div class="stat__label">Thefts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons -->
+  <section id="reasons" class="section--gradient">
+    <div class="container container--narrow">
       
       <!-- Reason 1 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">01</span>
-          <div class="listicle-item__content">
-            <h3>your phone stays where you put it</h3>
-            <p>The hidden anti-theft phone pocket sits against your back. Pickpockets can't reach it. You can't accidentally drop it. It's always exactly where you left it.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ Secure zipper + body-contact design = peace of mind</p>
-          </div>
+          <div class="reason__number">01</div>
+          <h3>your phone stays where you put it</h3>
+          <p>The dedicated anti-theft phone pocket sits against your back. Pickpockets can't reach it. You can't accidentally drop it. It's always exactly where you left it.</p>
+          <p class="reason__highlight">→ Secure against-body design = peace of mind</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">📱🔒</span>
-        </div>
+        <div class="reason__visual">📱🔒</div>
       </div>
 
       <!-- Reason 2 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">02</span>
-          <div class="listicle-item__content">
-            <h3>sail through security lines</h3>
-            <p>Insomniac-approved. Ultra-approved. EDC-approved. Security knows the bag. They wave you through while everyone else gets searched.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ Pre-approved at 500+ venues worldwide</p>
-          </div>
+          <div class="reason__number">02</div>
+          <h3>sail through security lines</h3>
+          <p>Compliant with all Insomniac Festival bag policies for a seamless security experience. Security knows the pack—they wave you through while everyone else gets searched.</p>
+          <p class="reason__highlight">→ Pre-approved at 500+ venues worldwide</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">✅⚡</span>
-        </div>
+        <div class="reason__visual">✅⚡</div>
       </div>
 
       <!-- Reason 3 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">03</span>
-          <div class="listicle-item__content">
-            <h3>hydrate without losing your spot</h3>
-            <p>External water bottle pocket holds up to 750mL. Grab, drink, replace—all without opening your bag or leaving the rail.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ Stay hydrated. Stay in the moment.</p>
-          </div>
+          <div class="reason__number">03</div>
+          <h3>hydrate without losing your spot</h3>
+          <p>External water bottle pocket holds up to 750mL. Grab, drink, replace—all without opening your pack or leaving the rail.</p>
+          <p class="reason__highlight">→ Stay hydrated. Stay in the moment.</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">💧🎵</span>
-        </div>
+        <div class="reason__visual">💧🎵</div>
       </div>
 
       <!-- CTA Break -->
       <div class="inline-cta animate-on-scroll">
-        <div class="inline-cta__text">Ready to see what 2 million ravers already know?</div>
+        <p>Ready to see what 2 million festival-goers already know?</p>
         <a href="#offer" class="btn btn--primary">get yours now</a>
       </div>
 
       <!-- Reason 4 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">04</span>
-          <div class="listicle-item__content">
-            <h3>three ways to wear it</h3>
-            <p>Backpack for walking in. Crossbody for dancing. Over-shoulder for vibing. The adjustable strap system adapts to your energy.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ Flex Wear System™ included</p>
-          </div>
+          <div class="reason__number">04</div>
+          <h3>three ways to wear it</h3>
+          <p>The Flex Wear System with ring clip and adjustable straps. Backpack for walking in. Cross body for dancing. Over-shoulder for vibing.</p>
+          <p class="reason__highlight">→ Adapts to your energy and the moment</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">🎒↔️👜</span>
-        </div>
+        <div class="reason__visual">🎒↔️👜</div>
       </div>
 
       <!-- Reason 5 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">05</span>
-          <div class="listicle-item__content">
-            <h3>built-in wallet = no fumbling</h3>
-            <p>Dedicated card slots inside. ID, credit card, cash—all organized. No more digging through a dark bag at the merch booth.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ 4 internal pockets + built-in wallet</p>
-          </div>
+          <div class="reason__number">05</div>
+          <h3>built-in wallet = no fumbling</h3>
+          <p>4 internal organizational pockets plus built-in credit/debit card pockets. ID, cards, cash—all organized. No more digging through a dark bag at the merch booth.</p>
+          <p class="reason__highlight">→ Everything has its place</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">💳✨</span>
-        </div>
+        <div class="reason__visual">💳✨</div>
       </div>
 
       <!-- Reason 6 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">06</span>
-          <div class="listicle-item__content">
-            <h3>cut-resistant material</h3>
-            <p>Slash-proof construction. Reinforced seams. YKK zippers. This bag was designed to survive festival chaos—and look good doing it.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ 2-year manufacturer warranty</p>
-          </div>
+          <div class="reason__number">06</div>
+          <h3>cut resistant, built to last</h3>
+          <p>Water resistant vegan PU leather. YKK zippers. Anti-theft zipper clip hardware. This pack was designed to survive festival chaos—and look good doing it.</p>
+          <p class="reason__highlight">→ 2-year manufacturer warranty</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">🛡️💪</span>
-        </div>
+        <div class="reason__visual">🛡️💪</div>
       </div>
 
       <!-- Reason 7 -->
-      <div class="listicle-item animate-on-scroll">
+      <div class="reason animate-on-scroll">
         <div>
-          <span class="listicle-item__number">07</span>
-          <div class="listicle-item__content">
-            <h3>it actually looks good</h3>
-            <p>Sleek vegan PU leather. Minimal branding. Goes with every fit. This isn't a "festival bag"—it's a bag you'll actually use every day.</p>
-            <p style="margin-top: 1rem; color: var(--blue); font-weight: 600;">→ Available in 5 colors</p>
-          </div>
+          <div class="reason__number">07</div>
+          <h3>it actually looks good</h3>
+          <p>Sleek, compact design. Simple aesthetics that match all your fits. This isn't a "festival bag"—it's a pack you'll actually use for everyday.</p>
+          <p class="reason__highlight">→ Fashion meets function</p>
         </div>
-        <div class="reason-visual">
-          <span class="icon-animate">🔥💜</span>
-        </div>
+        <div class="reason__visual">🔥💜</div>
       </div>
 
     </div>
   </section>
 
   <!-- Testimonial -->
-  <section class="section--light">
+  <section>
     <div class="container container--narrow">
       <div class="testimonial animate-on-scroll">
-        <p class="testimonial__text">"I've been to 47 festivals. This is the only bag I trust. Lost my phone once before—never again."</p>
+        <p class="testimonial__text">"I've been to 47 festivals. This is the only pack I trust. Lost my phone once before—never again."</p>
         <p class="testimonial__author">— @ravequeen_maya, 2.3M followers</p>
       </div>
     </div>
   </section>
 
   <!-- Comparison -->
-  <section>
+  <section class="section--gradient">
     <div class="container">
-      <div class="section__header animate-on-scroll">
+      <div class="animate-on-scroll" style="text-align: center; margin-bottom: var(--space-lg);">
         <span class="subtitle">The Difference</span>
         <h2>regular bag vs. lunchbox pack</h2>
       </div>
@@ -257,7 +291,7 @@
             <tr>
               <th>Feature</th>
               <th>Regular Backpack</th>
-              <th style="background: var(--orange); color: var(--black);">Lunchbox Pack</th>
+              <th>Lunchbox Pack</th>
             </tr>
           </thead>
           <tbody>
@@ -267,17 +301,17 @@
               <td class="check">✓</td>
             </tr>
             <tr>
-              <td>Festival security approved</td>
+              <td>Security line approved</td>
               <td class="cross">✗</td>
-              <td class="check">✓</td>
+              <td class="check">✓ 500+ venues</td>
             </tr>
             <tr>
               <td>External water bottle pocket</td>
               <td class="cross">Sometimes</td>
-              <td class="check">✓ Always</td>
+              <td class="check">✓ 750mL</td>
             </tr>
             <tr>
-              <td>Cut-resistant material</td>
+              <td>Cut resistant material</td>
               <td class="cross">✗</td>
               <td class="check">✓</td>
             </tr>
@@ -292,7 +326,7 @@
               <td class="check">✓</td>
             </tr>
             <tr>
-              <td>3-way wear system</td>
+              <td>Flex Wear System (3-way)</td>
               <td class="cross">✗</td>
               <td class="check">✓</td>
             </tr>
@@ -310,35 +344,36 @@
   <!-- Offer Module -->
   <section class="offer" id="offer">
     <div class="container">
-      <div class="offer__content animate-on-scroll">
+      <div class="animate-on-scroll">
         <span class="offer__badge">🔥 Festival Season Sale</span>
         <h2>get your lunchbox mini pack</h2>
-        <p>Join 2 million+ ravers who never worry about their stuff.</p>
+        <p class="offer__subtitle">Join 2 million+ festival-goers who never worry about their stuff.</p>
         
         <div class="offer__price">
-          <span class="offer__price-old">$89</span>
-          <span class="offer__price-new">$69</span>
+          <div class="offer__price-old">$89</div>
+          <div class="offer__price-new">$69</div>
         </div>
         
         <ul class="offer__features">
           <li>Anti-theft phone pocket</li>
           <li>Security line approved</li>
-          <li>External water bottle pocket</li>
-          <li>Cut-resistant material</li>
+          <li>External water bottle pocket (750mL)</li>
+          <li>Cut resistant material</li>
+          <li>Flex Wear System — 3 ways to wear</li>
           <li>2-year warranty</li>
           <li>Free shipping over $50</li>
         </ul>
         
         <div class="offer__cta">
-          <a href="https://lunchboxpacks.com" class="btn btn--primary btn--large">shop now — $69</a>
+          <a href="https://lunchboxpacks.com" class="btn btn--primary btn--large btn--full" style="max-width: 400px;">shop now — $69</a>
         </div>
         
-        <p class="offer__urgency">⏰ Sale ends when festival season starts</p>
+        <p style="margin-top: var(--space-sm); font-size: var(--font-size-small); color: var(--gray);">⏰ Sale ends when festival season starts</p>
         
-        <div class="trust-badges" style="margin-top: 2rem; opacity: 0.8;">
-          <span class="trust-badge">🔒 Secure checkout</span>
-          <span class="trust-badge">🚚 Free shipping</span>
-          <span class="trust-badge">↩️ Easy returns</span>
+        <div class="trust-row">
+          <span>🔒 Secure checkout</span>
+          <span>🚚 Free shipping</span>
+          <span>↩️ Easy returns</span>
         </div>
       </div>
     </div>
@@ -346,16 +381,8 @@
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>© 2026 Lunchbox Packs. Made for the fam.</p>
-    </div>
+    <p>© 2026 Lunchbox Packs. Made for the fam.</p>
   </footer>
-
-  <!-- Sticky CTA -->
-  <div class="sticky-cta" id="stickyCta">
-    <span class="sticky-cta__text">Mini Pack <span class="sticky-cta__price">$69</span></span>
-    <a href="#offer" class="btn btn--primary">get yours</a>
-  </div>
 
   <script>
     // Reading progress
@@ -364,14 +391,6 @@
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
       document.getElementById('progress').style.width = scrolled + '%';
-      
-      // Sticky CTA visibility
-      const stickyCta = document.getElementById('stickyCta');
-      if (winScroll > 600) {
-        stickyCta.classList.add('visible');
-      } else {
-        stickyCta.classList.remove('visible');
-      }
     });
 
     // Animate on scroll
@@ -384,35 +403,6 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-    // Counter animation
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counter = entry.target;
-          const target = parseFloat(counter.dataset.target);
-          const isDecimal = target % 1 !== 0;
-          let current = 0;
-          const increment = target / 50;
-          
-          const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-              counter.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.textContent = isDecimal ? target.toFixed(1) : target;
-            }
-          };
-          
-          updateCounter();
-          counterObserver.unobserve(counter);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
   </script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A0A">
   <title>Lunchbox Landing Pages | Preview</title>
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -11,100 +12,94 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--black);
-      color: var(--white);
     }
     
-    .preview-container {
+    .preview {
       text-align: center;
-      padding: 2rem;
+      padding: var(--space-lg);
+      width: 100%;
     }
     
-    .preview-container h1 {
-      margin-bottom: 0.5rem;
+    .preview h1 {
+      margin-bottom: var(--space-xs);
     }
     
-    .preview-container p {
-      opacity: 0.7;
-      margin-bottom: 3rem;
+    .preview > p {
+      margin-bottom: var(--space-lg);
     }
     
-    .page-cards {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 800px;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      max-width: 700px;
+      margin: 0 auto;
     }
     
-    .page-card {
-      background: #1a1a1a;
-      padding: 2rem;
+    .card {
+      background: var(--dark-mid);
+      border: 1px solid var(--border);
+      padding: var(--space-md);
       text-align: left;
-      transition: all 0.3s ease;
       text-decoration: none;
-      color: var(--white);
-      border: 1px solid #333;
+      transition: all var(--transition);
     }
     
-    .page-card:hover {
+    .card:hover {
+      border-color: var(--purple);
       transform: translateY(-4px);
-      border-color: var(--orange);
-      background: #222;
     }
     
-    .page-card__type {
-      font-size: 0.75rem;
+    .card__type {
+      font-size: var(--font-size-small);
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--orange);
-      margin-bottom: 1rem;
+      color: var(--purple-light);
+      margin-bottom: var(--space-sm);
     }
     
-    .page-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-xs);
     }
     
-    .page-card p {
-      font-size: 0.875rem;
-      opacity: 0.7;
-      margin: 0;
+    .card p {
+      font-size: var(--font-size-small);
     }
     
-    .page-card__arrow {
-      margin-top: 1.5rem;
-      font-size: 1.5rem;
+    .card__arrow {
+      margin-top: var(--space-sm);
+      font-size: 1.25rem;
+      color: var(--purple-light);
     }
     
-    .footer-note {
-      margin-top: 3rem;
-      font-size: 0.75rem;
-      opacity: 0.5;
+    @media (min-width: 640px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="preview-container">
+  <div class="preview">
     <h1>lunchbox landing pages</h1>
     <p>Conversion-optimized pages for festival season 2026</p>
     
-    <div class="page-cards">
-      <a href="listicle.html" class="page-card">
-        <div class="page-card__type">Listicle</div>
+    <div class="cards">
+      <a href="listicle.html" class="card">
+        <div class="card__type">Listicle</div>
         <h2>7 reasons festival-goers are switching</h2>
-        <p>Scannable, social-proof heavy format. Stats, features, comparison table.</p>
-        <div class="page-card__arrow">→</div>
+        <p>Scannable format. Stats, features, comparison table.</p>
+        <div class="card__arrow">→</div>
       </a>
       
-      <a href="advertorial.html" class="page-card">
-        <div class="page-card__type">Advertorial</div>
-        <h2>how one stolen phone led to a revolution</h2>
-        <p>Story-driven editorial. Personal narrative, problem/solution arc.</p>
-        <div class="page-card__arrow">→</div>
+      <a href="advertorial.html" class="card">
+        <div class="card__type">Advertorial</div>
+        <h2>how one stolen phone changed everything</h2>
+        <p>Story-driven editorial. Problem/solution narrative.</p>
+        <div class="card__arrow">→</div>
       </a>
     </div>
-    
-    <p class="footer-note">Based on Lunchbox Brand Guide 2024</p>
   </div>
 </body>
 </html>
