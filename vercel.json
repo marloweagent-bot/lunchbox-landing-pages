@@ -1,12 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/",
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "festivalstory.lunchboxpacks.com" }],
       "destination": "/advertorial.html"
     },
     {
-      "source": "/",
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "listicle.lunchboxpacks.com" }],
       "destination": "/listicle.html"
     }
