@@ -3,18 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How One Stolen Phone Led to a Festival Revolution | Lunchbox</title>
+  <title>How One Stolen Phone Led to a Festival Revolution | Lunchbox Packs</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Advertorial-specific styles */
+    /* Brand-forward advertorial styles */
+    
+    /* Wave SVG background */
+    .wave-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 150'%3E%3Cpath fill='%230D46CA' d='M0,96L60,85.3C120,75,240,53,360,58.7C480,64,600,96,720,101.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,150L1380,150C1320,150,1200,150,1080,150C960,150,840,150,720,150C600,150,480,150,360,150C240,150,120,150,60,150L0,150Z'/%3E%3C/svg%3E") no-repeat bottom;
+      background-size: cover;
+    }
+    
+    /* Pink 12-point star */
+    .star-12 {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: var(--pink);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    
+    .star-12--large {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .star-12--float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Hero */
     .article-hero {
-      min-height: 70vh;
+      min-height: 80vh;
       display: flex;
       align-items: flex-end;
-      padding-bottom: 4rem;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)),
-                  linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding-bottom: 6rem;
+      background: var(--black);
       color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 200px;
+      height: 200px;
+      background: var(--pink);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      opacity: 0.15;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      top: 40%;
+      right: 25%;
+      width: 100px;
+      height: 100px;
+      background: var(--orange);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      opacity: 0.1;
+      animation: float 5s ease-in-out infinite 1s;
     }
     
     .article-meta {
@@ -22,99 +80,190 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 1.5rem;
-      font-size: var(--font-size-small);
+      font-size: 0.75rem;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
     }
     
     .article-meta__tag {
       background: var(--orange);
       color: var(--black);
-      padding: 0.25rem 0.75rem;
+      padding: 0.375rem 1rem;
       font-weight: 700;
     }
     
+    .article-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      max-width: 800px;
+    }
+    
+    .article-hero__lead {
+      font-size: 1.25rem;
+      opacity: 0.85;
+      margin-top: 1.5rem;
+      max-width: 600px;
+    }
+    
+    /* Article body */
     .article-content {
       padding: var(--space-xl) 0;
     }
     
-    .drop-cap::first-letter {
-      float: left;
-      font-size: 4rem;
-      line-height: 1;
-      font-weight: 700;
-      color: var(--orange);
-      margin-right: 0.5rem;
-      margin-top: 0.1rem;
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
     }
     
-    .image-full {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      height: 400px;
-      background: linear-gradient(135deg, var(--blue) 0%, #1a1a2e 100%);
+    .article-body p {
+      margin-bottom: 1.75rem;
+      font-size: 1.125rem;
+      line-height: 1.75;
+    }
+    
+    .drop-cap::first-letter {
+      float: left;
+      font-size: 4.5rem;
+      line-height: 0.8;
+      font-weight: 700;
+      color: var(--orange);
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+    }
+    
+    .highlight {
+      background: linear-gradient(to bottom, transparent 50%, var(--pink) 50%);
+      padding: 0 4px;
+    }
+    
+    .highlight--blue {
+      background: linear-gradient(to bottom, transparent 50%, rgba(13, 70, 202, 0.3) 50%);
+    }
+    
+    /* Pullquote */
+    .pullquote {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--blue);
+      border-left: 4px solid var(--orange);
+      padding-left: 1.5rem;
+      margin: 3rem 0;
+    }
+    
+    /* Chapter markers with wave */
+    .chapter {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 1rem;
+      margin: 4rem 0 2rem;
+    }
+    
+    .chapter__wave {
+      flex: 1;
+      height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath fill='none' stroke='%230D46CA' stroke-width='2' d='M0,10 Q12.5,0 25,10 T50,10 T75,10 T100,10'/%3E%3C/svg%3E") repeat-x center;
+      background-size: 50px 20px;
+    }
+    
+    .chapter__text {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+    
+    /* Full-width stat callout */
+    .stat-callout {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background: var(--black);
       color: var(--white);
-      font-size: 3rem;
-      margin: var(--space-lg) 0;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 3rem 0;
       position: relative;
       overflow: hidden;
     }
     
-    .image-full::before {
+    .stat-callout::before,
+    .stat-callout::after {
       content: '';
       position: absolute;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(255,255,255,0.03) 20px,
-        rgba(255,255,255,0.03) 40px
-      );
-      animation: moveStripes 20s linear infinite;
+      width: 120px;
+      height: 120px;
+      background: var(--pink);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      opacity: 0.1;
     }
     
-    @keyframes moveStripes {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(40px, 40px); }
+    .stat-callout::before {
+      top: -30px;
+      left: 10%;
+      animation: float 4s ease-in-out infinite;
     }
     
-    .image-full span {
-      position: relative;
-      z-index: 1;
+    .stat-callout::after {
+      bottom: -30px;
+      right: 10%;
+      animation: float 5s ease-in-out infinite 1s;
     }
     
-    .chapter-marker {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: var(--space-xl) 0 var(--space-md);
+    .stat-callout__number {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
     }
     
-    .chapter-marker__line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-    
-    .chapter-marker__text {
-      font-size: var(--font-size-small);
+    .stat-callout__label {
+      font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--blue);
-      font-weight: 600;
+      letter-spacing: 0.15em;
+      margin-top: 0.5rem;
+      opacity: 0.8;
     }
     
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      background: var(--light);
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    
+    .stats-row__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stats-row__number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+    }
+    
+    .stats-row__label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+      color: #666;
+    }
+    
+    /* Product reveal */
     .product-reveal {
       background: var(--black);
       color: var(--white);
-      padding: var(--space-xl);
-      margin: var(--space-xl) 0;
+      padding: 4rem 2rem;
+      margin: 3rem 0;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -127,118 +276,316 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--pink), var(--orange), var(--blue));
+      background: linear-gradient(90deg, var(--pink), var(--orange), var(--blue), var(--pink));
+      background-size: 200% 100%;
+      animation: gradientMove 3s linear infinite;
+    }
+    
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    
+    .product-reveal__icon {
+      width: 120px;
+      height: 120px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 3rem;
+      animation: float 3s ease-in-out infinite;
     }
     
     .product-reveal h3 {
-      font-size: var(--font-size-title);
-      margin-bottom: var(--space-md);
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
     
-    .product-icon {
-      font-size: 6rem;
-      margin-bottom: var(--space-md);
-      animation: float 3s ease-in-out infinite;
+    .product-reveal p {
+      opacity: 0.8;
+      max-width: 500px;
+      margin: 0 auto;
     }
     
     .feature-pills {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.5rem;
-      margin-top: var(--space-md);
+      gap: 0.75rem;
+      margin-top: 2rem;
     }
     
     .feature-pill {
-      background: rgba(255,255,255,0.1);
-      padding: 0.5rem 1rem;
-      font-size: var(--font-size-small);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 153, 0, 0.2);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      padding: 0.5rem 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: lowercase;
     }
     
-    .author-box {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: var(--space-md);
+    /* Feature cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .feature-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+    }
+    
+    .feature-card__icon {
+      width: 48px;
+      height: 48px;
       background: var(--light);
-      margin: var(--space-xl) 0;
-    }
-    
-    .author-box__avatar {
-      width: 60px;
-      height: 60px;
-      background: var(--blue);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-transform: lowercase;
+    }
+    
+    .feature-card p {
+      font-size: 0.875rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    /* Testimonial */
+    .testimonial {
+      background: var(--white);
+      border-left: 4px solid var(--orange);
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .testimonial__text {
+      font-size: 1.25rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .testimonial__author {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    
+    /* Author box */
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: var(--light);
+      margin: 3rem 0;
+    }
+    
+    .author-box__avatar {
+      width: 56px;
+      height: 56px;
+      background: var(--blue);
       color: var(--white);
-      font-size: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
     }
     
     .author-box__name {
       font-weight: 700;
+      margin-bottom: 0.25rem;
     }
     
     .author-box__title {
-      font-size: var(--font-size-small);
+      font-size: 0.8rem;
       color: #666;
     }
     
+    /* Inline stat */
     .stat-inline {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.25rem;
+      display: inline;
       color: var(--orange);
       font-weight: 700;
     }
     
-    .stat-inline__number {
-      font-size: 1.5em;
-    }
-    
-    .final-cta {
-      background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 100%);
+    /* Offer module */
+    .offer-module {
+      background: var(--black);
       color: var(--white);
-      padding: var(--space-xl);
+      padding: 5rem 2rem;
       text-align: center;
-      margin-top: var(--space-xl);
+      position: relative;
+      overflow: hidden;
     }
     
-    .final-cta h2 {
-      margin-bottom: var(--space-sm);
+    .offer-module::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%230D46CA' fill-opacity='0.15' d='M0,128L60,117.3C120,107,240,85,360,90.7C480,96,600,128,720,133.3C840,139,960,117,1080,106.7C1200,96,1320,96,1380,96L1440,96L1440,200L1380,200C1320,200,1200,200,1080,200C960,200,840,200,720,200C600,200,480,200,360,200C240,200,120,200,60,200L0,200Z'/%3E%3C/svg%3E") no-repeat bottom;
+      background-size: cover;
     }
     
-    .final-cta p {
-      opacity: 0.8;
-      margin-bottom: var(--space-md);
+    .offer-module__content {
+      position: relative;
+      z-index: 2;
+      max-width: 550px;
+      margin: 0 auto;
     }
     
-    .price-stack {
-      margin: var(--space-md) 0;
-    }
-    
-    .price-stack__original {
-      font-size: 1.25rem;
-      text-decoration: line-through;
-      opacity: 0.5;
-    }
-    
-    .price-stack__current {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--orange);
-    }
-    
-    .guarantee-badge {
+    .offer-module__badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(255,255,255,0.1);
+      background: var(--pink);
+      color: var(--black);
+      padding: 0.5rem 1.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+    
+    .offer-module h2 {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      margin-bottom: 1rem;
+    }
+    
+    .offer-module__subtitle {
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+    
+    .offer-module__price {
+      margin: 2rem 0;
+    }
+    
+    .offer-module__price-old {
+      font-size: 1.25rem;
+      text-decoration: line-through;
+      opacity: 0.4;
+    }
+    
+    .offer-module__price-new {
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+    
+    .offer-module__features {
+      list-style: none;
+      text-align: left;
+      display: inline-block;
+      margin: 2rem 0;
+    }
+    
+    .offer-module__features li {
+      padding: 0.625rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+    }
+    
+    .offer-module__features li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 700;
+    }
+    
+    .offer-module__cta {
+      margin: 2rem 0;
+    }
+    
+    .offer-module__cta .btn {
+      font-size: 1.125rem;
+      padding: 1.25rem 3rem;
+    }
+    
+    .offer-module__guarantee {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
       padding: 0.75rem 1.5rem;
-      margin-top: var(--space-md);
-      font-size: var(--font-size-small);
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    
+    .trust-row span {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    footer p {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .trust-row {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -247,251 +594,227 @@
 
   <!-- Hero -->
   <section class="article-hero">
-    <div class="container container--narrow">
-      <div class="article-meta">
+    <div class="wave-bg"></div>
+    <div class="container">
+      <div class="article-meta animate-on-scroll">
         <span class="article-meta__tag">Festival Culture</span>
         <span>5 min read</span>
-        <span>March 2026</span>
       </div>
-      <h1>how one stolen phone led to a festival revolution</h1>
-      <p class="hero__text" style="margin-top: 1.5rem; font-size: 1.25rem; opacity: 0.9;">
-        The story behind the bag 2 million ravers now swear by.
-      </p>
+      <h1 class="animate-on-scroll">how one stolen phone led to a festival revolution</h1>
+      <p class="article-hero__lead animate-on-scroll">The story behind the bag 2 million ravers now swear by.</p>
     </div>
   </section>
 
   <!-- Article Content -->
   <article class="article-content">
-    <div class="container container--narrow">
-      
-      <p class="drop-cap animate-on-scroll">
-        It was Day 2 of EDC Las Vegas, 2019. The bass was hitting. The lights were perfect. And somewhere between the main stage and the water station, someone's hand slipped into my pocket and took everything.
-      </p>
-      
-      <p class="animate-on-scroll">
-        Phone. ID. Credit cards. Festival wristband confirmation. Gone in three seconds. The rest of the weekend was spent at guest services, on hold with my bank, and explaining to my friends why I couldn't get back into VIP.
-      </p>
-      
-      <p class="animate-on-scroll">
-        <span class="story__highlight">I wasn't alone.</span> That year, festival theft reports hit an all-time high. Social media was flooded with stories just like mine. And the solutions? "Keep your phone in your bra." "Safety pin your pockets." "Just don't bring anything valuable."
-      </p>
-      
-      <p class="story__pullquote animate-on-scroll">
-        "Why should we have to choose between security and actually enjoying the experience?"
-      </p>
-      
-      <div class="chapter-marker animate-on-scroll">
-        <span class="chapter-marker__line"></span>
-        <span class="chapter-marker__text">The Problem</span>
-        <span class="chapter-marker__line"></span>
-      </div>
-      
-      <p class="animate-on-scroll">
-        Festival theft isn't random bad luck. It's a <strong>$400 million annual problem</strong>. Professional pickpocket crews travel the circuit, targeting the same events year after year. They know the crowds. They know the distractions. And they know that most festival-goers are carrying everything valuable in easily-accessible pockets.
-      </p>
-      
-      <div class="image-full animate-on-scroll">
-        <span>📊 $400M+ stolen annually at festivals</span>
-      </div>
-      
-      <p class="animate-on-scroll">
-        The numbers are staggering:
-      </p>
-      
-      <div class="stats-grid animate-on-scroll" style="margin: 2rem 0;">
-        <div class="stat">
-          <div class="stat__number" style="color: var(--blue);">1 in 4</div>
-          <div class="stat__label">Festival-goers report theft</div>
+    <div class="container">
+      <div class="article-body">
+        
+        <p class="drop-cap animate-on-scroll">
+          It was Day 2 of EDC Las Vegas. The bass was hitting. The lights were perfect. And somewhere between the main stage and the water station, someone's hand slipped into my pocket and took everything.
+        </p>
+        
+        <p class="animate-on-scroll">
+          Phone. ID. Cards. Festival wristband confirmation. Gone in three seconds. The rest of the weekend was spent at guest services, on hold with my bank, explaining why I couldn't get back into VIP.
+        </p>
+        
+        <p class="animate-on-scroll">
+          <span class="highlight">I wasn't alone.</span> That year, festival theft reports hit an all-time high. The solutions people offered? "Keep your phone in your bra." "Safety pin your pockets." "Just don't bring anything valuable."
+        </p>
+        
+        <p class="pullquote animate-on-scroll">
+          "Why should we have to choose between security and actually enjoying the experience?"
+        </p>
+        
+        <div class="chapter animate-on-scroll">
+          <span class="chapter__wave"></span>
+          <span class="chapter__text">The Problem</span>
+          <span class="chapter__wave"></span>
         </div>
-        <div class="stat">
-          <div class="stat__number" style="color: var(--blue);">78%</div>
-          <div class="stat__label">Are phones</div>
+        
+        <p class="animate-on-scroll">
+          Festival theft isn't random bad luck. It's a <strong>$400 million annual problem.</strong> Professional pickpocket crews travel the circuit, targeting the same events year after year.
+        </p>
+        
+        <div class="stat-callout animate-on-scroll">
+          <div class="stat-callout__number">$400M+</div>
+          <div class="stat-callout__label">stolen annually at live events</div>
         </div>
-        <div class="stat">
-          <div class="stat__number" style="color: var(--blue);">3 sec</div>
-          <div class="stat__label">Average theft time</div>
+        
+        <div class="stats-row animate-on-scroll">
+          <div class="stats-row__item">
+            <span class="stats-row__number">1 in 4</span>
+            <span class="stats-row__label">Report theft</span>
+          </div>
+          <div class="stats-row__item">
+            <span class="stats-row__number">78%</span>
+            <span class="stats-row__label">Are phones</span>
+          </div>
+          <div class="stats-row__item">
+            <span class="stats-row__number">3 sec</span>
+            <span class="stats-row__label">Avg theft time</span>
+          </div>
         </div>
-      </div>
-      
-      <p class="animate-on-scroll">
-        Traditional backpacks? Easy targets. Fanny packs? Even easier—they sit right at waist level where hands naturally move through crowds. And the irony? The tighter you pack yourself into the rail, the more exposed you become.
-      </p>
-      
-      <div class="chapter-marker animate-on-scroll">
-        <span class="chapter-marker__line"></span>
-        <span class="chapter-marker__text">The Solution</span>
-        <span class="chapter-marker__line"></span>
-      </div>
-      
-      <p class="animate-on-scroll">
-        After my EDC disaster, I became obsessed with finding a solution. I tried hidden wallets (uncomfortable), money belts (worse), and those weird neck pouches tourists wear (absolutely not).
-      </p>
-      
-      <p class="animate-on-scroll">
-        Then a friend showed me something different. A bag that was <em>designed</em> for this exact problem—not adapted from travel gear or outdoor equipment, but built from the ground up for festival culture.
-      </p>
-      
-      <div class="product-reveal animate-on-scroll">
-        <div class="product-icon">🎒</div>
-        <h3>the lunchbox mini pack</h3>
-        <p>Anti-theft hydration pack designed by festival-goers, for festival-goers.</p>
-        <div class="feature-pills">
-          <span class="feature-pill">Anti-Theft Phone Pocket</span>
-          <span class="feature-pill">Security Approved</span>
-          <span class="feature-pill">Cut-Resistant</span>
-          <span class="feature-pill">3-Way Wear</span>
+        
+        <p class="animate-on-scroll">
+          Traditional backpacks? Easy targets. Fanny packs? Even easier—they sit right at waist level where hands naturally move through crowds.
+        </p>
+        
+        <div class="chapter animate-on-scroll">
+          <span class="chapter__wave"></span>
+          <span class="chapter__text">The Solution</span>
+          <span class="chapter__wave"></span>
         </div>
-      </div>
-      
-      <p class="animate-on-scroll">
-        The key innovation? A hidden phone pocket that sits <strong>against your back</strong>. Not on your hip. Not on your front. Against your spine, where no one can reach it without you knowing.
-      </p>
-      
-      <p class="animate-on-scroll">
-        But that was just the start. The team behind it had thought through every pain point:
-      </p>
-      
-      <div class="feature-grid animate-on-scroll" style="margin: 2rem 0;">
-        <div class="feature-card">
-          <div class="feature-card__icon">✅</div>
-          <h3>security line approved</h3>
-          <p>Pre-approved at 500+ venues. Security sees the bag, waves you through.</p>
+        
+        <p class="animate-on-scroll">
+          After my EDC disaster, I tried everything. Hidden wallets. Money belts. Those weird neck pouches tourists wear. Nothing worked <em>and</em> felt normal.
+        </p>
+        
+        <p class="animate-on-scroll">
+          Then a friend showed me something different. A bag <span class="highlight--blue">designed for this exact problem</span>—not adapted from travel gear, but built from the ground up for festival culture.
+        </p>
+        
+        <div class="product-reveal animate-on-scroll">
+          <div class="product-reveal__icon">🎒</div>
+          <h3>the lunchbox mini pack</h3>
+          <p>Anti-theft hydration pack designed by festival-goers, for festival-goers.</p>
+          <div class="feature-pills">
+            <span class="feature-pill">anti-theft phone pocket</span>
+            <span class="feature-pill">security approved</span>
+            <span class="feature-pill">cut-resistant</span>
+            <span class="feature-pill">3-way wear</span>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">💧</div>
-          <h3>hydration ready</h3>
-          <p>External water bottle pocket. Drink without opening your bag.</p>
+        
+        <p class="animate-on-scroll">
+          The key innovation? A hidden phone pocket that sits <strong>against your back.</strong> Not on your hip. Not on your front. Against your spine, where no one can reach it.
+        </p>
+        
+        <div class="features-grid animate-on-scroll">
+          <div class="feature-card">
+            <div class="feature-card__icon">✅</div>
+            <h4>security line approved</h4>
+            <p>Pre-approved at 500+ venues. Security sees the bag, waves you through.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">💧</div>
+            <h4>hydration ready</h4>
+            <p>External water bottle pocket. Drink without opening your bag.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">🔒</div>
+            <h4>anti-theft zipper</h4>
+            <p>Clip locks the main compartment. Can't be opened without deliberate effort.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">🛡️</div>
+            <h4>cut-resistant</h4>
+            <p>Slash-proof material. They can't cut it open from behind.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🔒</div>
-          <h3>anti-theft zipper</h3>
-          <p>Clip locks the main compartment. Can't be opened without deliberate effort.</p>
+        
+        <div class="chapter animate-on-scroll">
+          <span class="chapter__wave"></span>
+          <span class="chapter__text">The Movement</span>
+          <span class="chapter__wave"></span>
         </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🛡️</div>
-          <h3>cut-resistant</h3>
-          <p>Slash-proof material. They can't cut it open from behind.</p>
+        
+        <p class="animate-on-scroll">
+          The difference was immediate. No more paranoid pocket-checks. No more keeping my hand over my phone during the drop. I could actually <span class="highlight">be present</span> in a way I hadn't been since that EDC nightmare.
+        </p>
+        
+        <p class="pullquote animate-on-scroll">
+          "For the first time in years, I stopped thinking about my stuff and started thinking about the music."
+        </p>
+        
+        <p class="animate-on-scroll">
+          Fast forward to 2026, and Lunchbox has become <em>the</em> festival bag. Over <span class="stat-inline">2.1 million</span> packs sold. A <span class="stat-inline">4.9★</span> average rating. You see them everywhere—EDC, Ultra, Tomorrowland, Burning Man.
+        </p>
+        
+        <p class="animate-on-scroll">
+          The most telling stat? <strong>Zero theft reports</strong> from customers using the anti-theft pocket correctly. Not fewer thefts. <em>Zero.</em>
+        </p>
+        
+        <div class="testimonial animate-on-scroll">
+          <p class="testimonial__text">"I've seen people get their stuff stolen right next to me at the rail. I just smiled because I knew my phone was exactly where I left it—pressed against my back where nobody could touch it."</p>
+          <p class="testimonial__author">— Sarah M., EDC 2025</p>
         </div>
-      </div>
-      
-      <div class="chapter-marker animate-on-scroll">
-        <span class="chapter-marker__line"></span>
-        <span class="chapter-marker__text">The Movement</span>
-        <span class="chapter-marker__line"></span>
-      </div>
-      
-      <p class="animate-on-scroll">
-        I bought my first Lunchbox Pack before Coachella 2020. (Yes, that Coachella that didn't happen. I tested it at smaller shows instead.)
-      </p>
-      
-      <p class="animate-on-scroll">
-        The difference was immediate. No more paranoid pocket-checks every five minutes. No more keeping my hand over my phone during the drop. I could actually <span class="story__highlight">be present</span> in a way I hadn't been since that EDC nightmare.
-      </p>
-      
-      <p class="story__pullquote animate-on-scroll">
-        "For the first time in years, I stopped thinking about my stuff and started thinking about the music."
-      </p>
-      
-      <p class="animate-on-scroll">
-        And I wasn't alone. Fast forward to 2026, and Lunchbox has become <em>the</em> festival bag. You see them everywhere—EDC, Ultra, Tomorrowland, Burning Man. The brand has sold over 
-        <span class="stat-inline"><span class="stat-inline__number">2.1</span> million</span> 
-        packs, with a 
-        <span class="stat-inline"><span class="stat-inline__number">4.9</span>★</span> 
-        average rating.
-      </p>
-      
-      <div class="image-full animate-on-scroll">
-        <span>🎪 2.1M+ packs sold worldwide</span>
-      </div>
-      
-      <p class="animate-on-scroll">
-        The most telling stat? <strong>Zero theft reports</strong> from customers using the anti-theft phone pocket correctly. Not "fewer thefts." Zero.
-      </p>
-      
-      <div class="testimonial animate-on-scroll">
-        <p class="testimonial__text">"I've seen people get their stuff stolen right next to me at the rail. I just smiled because I knew my phone was exactly where I left it—pressed against my back where nobody could touch it."</p>
-        <p class="testimonial__author">— Sarah M., verified customer (EDC 2025)</p>
-      </div>
-      
-      <div class="chapter-marker animate-on-scroll">
-        <span class="chapter-marker__line"></span>
-        <span class="chapter-marker__text">The Verdict</span>
-        <span class="chapter-marker__line"></span>
-      </div>
-      
-      <p class="animate-on-scroll">
-        Look, I'm not saying you <em>need</em> an anti-theft bag to enjoy a festival. Millions of people get through events every year without incident.
-      </p>
-      
-      <p class="animate-on-scroll">
-        But here's what I know: Since switching to Lunchbox, I've been to 23 festivals without a single security incident. I've stopped worrying about where my phone is. I've stopped doing the paranoid pocket-pat every time I leave a stage. 
-      </p>
-      
-      <p class="animate-on-scroll">
-        <strong>I've started actually enjoying the thing I paid hundreds of dollars to attend.</strong>
-      </p>
-      
-      <p class="animate-on-scroll">
-        That peace of mind? Worth way more than the price of a bag.
-      </p>
-      
-      <div class="author-box animate-on-scroll">
-        <div class="author-box__avatar">JT</div>
-        <div>
-          <div class="author-box__name">Jamie Torres</div>
-          <div class="author-box__title">Festival Culture Editor • 47 festivals and counting</div>
+        
+        <div class="chapter animate-on-scroll">
+          <span class="chapter__wave"></span>
+          <span class="chapter__text">The Verdict</span>
+          <span class="chapter__wave"></span>
         </div>
+        
+        <p class="animate-on-scroll">
+          Since switching to Lunchbox, I've been to 23 festivals without a single security incident. I've stopped worrying about where my phone is. I've stopped doing the paranoid pocket-pat every time I leave a stage.
+        </p>
+        
+        <p class="animate-on-scroll">
+          <strong>I've started actually enjoying the thing I paid hundreds of dollars to attend.</strong>
+        </p>
+        
+        <p class="animate-on-scroll">
+          That peace of mind? Worth way more than the price of a bag.
+        </p>
+        
+        <div class="author-box animate-on-scroll">
+          <div class="author-box__avatar">JT</div>
+          <div>
+            <div class="author-box__name">Jamie Torres</div>
+            <div class="author-box__title">Festival Culture Editor • 47 festivals and counting</div>
+          </div>
+        </div>
+        
       </div>
-      
     </div>
   </article>
 
-  <!-- Final CTA / Offer Module -->
-  <section class="offer" id="offer">
-    <div class="container">
-      <div class="offer__content animate-on-scroll">
-        <span class="offer__badge">Reader Exclusive</span>
-        <h2>ready to join the movement?</h2>
-        <p>Get the bag 2 million ravers trust. Festival season sale now live.</p>
-        
-        <div class="price-stack">
-          <div class="price-stack__original">$89</div>
-          <div class="price-stack__current">$69</div>
-        </div>
-        
-        <ul class="offer__features">
-          <li>Anti-theft phone pocket (the one that matters)</li>
-          <li>Security line approved at 500+ venues</li>
-          <li>Cut-resistant material</li>
-          <li>External hydration pocket</li>
-          <li>2-year warranty</li>
-          <li>Free shipping on orders over $50</li>
-        </ul>
-        
-        <div class="offer__cta">
-          <a href="https://lunchboxpacks.com" class="btn btn--primary btn--large">shop now — $69</a>
-        </div>
-        
-        <div class="guarantee-badge">
-          <span>🛡️</span>
-          <span>30-day money-back guarantee. No questions asked.</span>
-        </div>
-        
-        <div class="trust-badges" style="margin-top: 2rem;">
-          <span class="trust-badge">🔒 Secure checkout</span>
-          <span class="trust-badge">🚚 Free shipping</span>
-          <span class="trust-badge">⭐ 4.9/5 rating</span>
-        </div>
+  <!-- Offer Module -->
+  <section class="offer-module" id="offer">
+    <div class="offer-module__content animate-on-scroll">
+      <span class="offer-module__badge">
+        <span class="star-12" style="width: 16px; height: 16px;"></span>
+        Reader Exclusive
+      </span>
+      
+      <h2>ready to join the movement?</h2>
+      <p class="offer-module__subtitle">Get the bag 2 million ravers trust. Festival season sale live now.</p>
+      
+      <div class="offer-module__price">
+        <div class="offer-module__price-old">$89</div>
+        <div class="offer-module__price-new">$69</div>
+      </div>
+      
+      <ul class="offer-module__features">
+        <li>Anti-theft phone pocket</li>
+        <li>Security line approved at 500+ venues</li>
+        <li>Cut-resistant material</li>
+        <li>External hydration pocket</li>
+        <li>2-year manufacturer warranty</li>
+        <li>Free shipping over $50</li>
+      </ul>
+      
+      <div class="offer-module__cta">
+        <a href="https://lunchboxpacks.com" class="btn btn--primary btn--large">shop now — $69</a>
+      </div>
+      
+      <div class="offer-module__guarantee">
+        🛡️ 30-day money-back guarantee
+      </div>
+      
+      <div class="trust-row">
+        <span>🔒 Secure checkout</span>
+        <span>🚚 Free shipping</span>
+        <span>⭐ 4.9/5 rating</span>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>© 2026 Lunchbox Packs. Made for the fam.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">This is a sponsored article.</p>
-    </div>
+    <p>© 2026 Lunchbox Packs. Made for the fam.</p>
+    <p style="margin-top: 0.5rem;">This is sponsored content.</p>
   </footer>
 
   <script>
