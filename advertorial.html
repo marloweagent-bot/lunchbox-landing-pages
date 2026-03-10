@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How One Stolen Phone Led to a Festival Revolution | Lunchbox</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Advertorial-specific styles */
+    .article-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 4rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)),
+                  linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: var(--white);
+    }
+    
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: var(--font-size-small);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .article-meta__tag {
+      background: var(--orange);
+      color: var(--black);
+      padding: 0.25rem 0.75rem;
+      font-weight: 700;
+    }
+    
+    .article-content {
+      padding: var(--space-xl) 0;
+    }
+    
+    .drop-cap::first-letter {
+      float: left;
+      font-size: 4rem;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--orange);
+      margin-right: 0.5rem;
+      margin-top: 0.1rem;
+    }
+    
+    .image-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      height: 400px;
+      background: linear-gradient(135deg, var(--blue) 0%, #1a1a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 3rem;
+      margin: var(--space-lg) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-full::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.03) 20px,
+        rgba(255,255,255,0.03) 40px
+      );
+      animation: moveStripes 20s linear infinite;
+    }
+    
+    @keyframes moveStripes {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(40px, 40px); }
+    }
+    
+    .image-full span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .chapter-marker {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: var(--space-xl) 0 var(--space-md);
+    }
+    
+    .chapter-marker__line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .chapter-marker__text {
+      font-size: var(--font-size-small);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      font-weight: 600;
+    }
+    
+    .product-reveal {
+      background: var(--black);
+      color: var(--white);
+      padding: var(--space-xl);
+      margin: var(--space-xl) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-reveal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--pink), var(--orange), var(--blue));
+    }
+    
+    .product-reveal h3 {
+      font-size: var(--font-size-title);
+      margin-bottom: var(--space-md);
+    }
+    
+    .product-icon {
+      font-size: 6rem;
+      margin-bottom: var(--space-md);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: var(--space-md);
+    }
+    
+    .feature-pill {
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      font-size: var(--font-size-small);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: var(--space-md);
+      background: var(--light);
+      margin: var(--space-xl) 0;
+    }
+    
+    .author-box__avatar {
+      width: 60px;
+      height: 60px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+    }
+    
+    .author-box__name {
+      font-weight: 700;
+    }
+    
+    .author-box__title {
+      font-size: var(--font-size-small);
+      color: #666;
+    }
+    
+    .stat-inline {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      color: var(--orange);
+      font-weight: 700;
+    }
+    
+    .stat-inline__number {
+      font-size: 1.5em;
+    }
+    
+    .final-cta {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 100%);
+      color: var(--white);
+      padding: var(--space-xl);
+      text-align: center;
+      margin-top: var(--space-xl);
+    }
+    
+    .final-cta h2 {
+      margin-bottom: var(--space-sm);
+    }
+    
+    .final-cta p {
+      opacity: 0.8;
+      margin-bottom: var(--space-md);
+    }
+    
+    .price-stack {
+      margin: var(--space-md) 0;
+    }
+    
+    .price-stack__original {
+      font-size: 1.25rem;
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+    
+    .price-stack__current {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.75rem 1.5rem;
+      margin-top: var(--space-md);
+      font-size: var(--font-size-small);
+    }
+  </style>
+</head>
+<body>
+  <div class="reading-progress" id="progress"></div>
+
+  <!-- Hero -->
+  <section class="article-hero">
+    <div class="container container--narrow">
+      <div class="article-meta">
+        <span class="article-meta__tag">Festival Culture</span>
+        <span>5 min read</span>
+        <span>March 2026</span>
+      </div>
+      <h1>how one stolen phone led to a festival revolution</h1>
+      <p class="hero__text" style="margin-top: 1.5rem; font-size: 1.25rem; opacity: 0.9;">
+        The story behind the bag 2 million ravers now swear by.
+      </p>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container container--narrow">
+      
+      <p class="drop-cap animate-on-scroll">
+        It was Day 2 of EDC Las Vegas, 2019. The bass was hitting. The lights were perfect. And somewhere between the main stage and the water station, someone's hand slipped into my pocket and took everything.
+      </p>
+      
+      <p class="animate-on-scroll">
+        Phone. ID. Credit cards. Festival wristband confirmation. Gone in three seconds. The rest of the weekend was spent at guest services, on hold with my bank, and explaining to my friends why I couldn't get back into VIP.
+      </p>
+      
+      <p class="animate-on-scroll">
+        <span class="story__highlight">I wasn't alone.</span> That year, festival theft reports hit an all-time high. Social media was flooded with stories just like mine. And the solutions? "Keep your phone in your bra." "Safety pin your pockets." "Just don't bring anything valuable."
+      </p>
+      
+      <p class="story__pullquote animate-on-scroll">
+        "Why should we have to choose between security and actually enjoying the experience?"
+      </p>
+      
+      <div class="chapter-marker animate-on-scroll">
+        <span class="chapter-marker__line"></span>
+        <span class="chapter-marker__text">The Problem</span>
+        <span class="chapter-marker__line"></span>
+      </div>
+      
+      <p class="animate-on-scroll">
+        Festival theft isn't random bad luck. It's a <strong>$400 million annual problem</strong>. Professional pickpocket crews travel the circuit, targeting the same events year after year. They know the crowds. They know the distractions. And they know that most festival-goers are carrying everything valuable in easily-accessible pockets.
+      </p>
+      
+      <div class="image-full animate-on-scroll">
+        <span>📊 $400M+ stolen annually at festivals</span>
+      </div>
+      
+      <p class="animate-on-scroll">
+        The numbers are staggering:
+      </p>
+      
+      <div class="stats-grid animate-on-scroll" style="margin: 2rem 0;">
+        <div class="stat">
+          <div class="stat__number" style="color: var(--blue);">1 in 4</div>
+          <div class="stat__label">Festival-goers report theft</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" style="color: var(--blue);">78%</div>
+          <div class="stat__label">Are phones</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" style="color: var(--blue);">3 sec</div>
+          <div class="stat__label">Average theft time</div>
+        </div>
+      </div>
+      
+      <p class="animate-on-scroll">
+        Traditional backpacks? Easy targets. Fanny packs? Even easier—they sit right at waist level where hands naturally move through crowds. And the irony? The tighter you pack yourself into the rail, the more exposed you become.
+      </p>
+      
+      <div class="chapter-marker animate-on-scroll">
+        <span class="chapter-marker__line"></span>
+        <span class="chapter-marker__text">The Solution</span>
+        <span class="chapter-marker__line"></span>
+      </div>
+      
+      <p class="animate-on-scroll">
+        After my EDC disaster, I became obsessed with finding a solution. I tried hidden wallets (uncomfortable), money belts (worse), and those weird neck pouches tourists wear (absolutely not).
+      </p>
+      
+      <p class="animate-on-scroll">
+        Then a friend showed me something different. A bag that was <em>designed</em> for this exact problem—not adapted from travel gear or outdoor equipment, but built from the ground up for festival culture.
+      </p>
+      
+      <div class="product-reveal animate-on-scroll">
+        <div class="product-icon">🎒</div>
+        <h3>the lunchbox mini pack</h3>
+        <p>Anti-theft hydration pack designed by festival-goers, for festival-goers.</p>
+        <div class="feature-pills">
+          <span class="feature-pill">Anti-Theft Phone Pocket</span>
+          <span class="feature-pill">Security Approved</span>
+          <span class="feature-pill">Cut-Resistant</span>
+          <span class="feature-pill">3-Way Wear</span>
+        </div>
+      </div>
+      
+      <p class="animate-on-scroll">
+        The key innovation? A hidden phone pocket that sits <strong>against your back</strong>. Not on your hip. Not on your front. Against your spine, where no one can reach it without you knowing.
+      </p>
+      
+      <p class="animate-on-scroll">
+        But that was just the start. The team behind it had thought through every pain point:
+      </p>
+      
+      <div class="feature-grid animate-on-scroll" style="margin: 2rem 0;">
+        <div class="feature-card">
+          <div class="feature-card__icon">✅</div>
+          <h3>security line approved</h3>
+          <p>Pre-approved at 500+ venues. Security sees the bag, waves you through.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💧</div>
+          <h3>hydration ready</h3>
+          <p>External water bottle pocket. Drink without opening your bag.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔒</div>
+          <h3>anti-theft zipper</h3>
+          <p>Clip locks the main compartment. Can't be opened without deliberate effort.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🛡️</div>
+          <h3>cut-resistant</h3>
+          <p>Slash-proof material. They can't cut it open from behind.</p>
+        </div>
+      </div>
+      
+      <div class="chapter-marker animate-on-scroll">
+        <span class="chapter-marker__line"></span>
+        <span class="chapter-marker__text">The Movement</span>
+        <span class="chapter-marker__line"></span>
+      </div>
+      
+      <p class="animate-on-scroll">
+        I bought my first Lunchbox Pack before Coachella 2020. (Yes, that Coachella that didn't happen. I tested it at smaller shows instead.)
+      </p>
+      
+      <p class="animate-on-scroll">
+        The difference was immediate. No more paranoid pocket-checks every five minutes. No more keeping my hand over my phone during the drop. I could actually <span class="story__highlight">be present</span> in a way I hadn't been since that EDC nightmare.
+      </p>
+      
+      <p class="story__pullquote animate-on-scroll">
+        "For the first time in years, I stopped thinking about my stuff and started thinking about the music."
+      </p>
+      
+      <p class="animate-on-scroll">
+        And I wasn't alone. Fast forward to 2026, and Lunchbox has become <em>the</em> festival bag. You see them everywhere—EDC, Ultra, Tomorrowland, Burning Man. The brand has sold over 
+        <span class="stat-inline"><span class="stat-inline__number">2.1</span> million</span> 
+        packs, with a 
+        <span class="stat-inline"><span class="stat-inline__number">4.9</span>★</span> 
+        average rating.
+      </p>
+      
+      <div class="image-full animate-on-scroll">
+        <span>🎪 2.1M+ packs sold worldwide</span>
+      </div>
+      
+      <p class="animate-on-scroll">
+        The most telling stat? <strong>Zero theft reports</strong> from customers using the anti-theft phone pocket correctly. Not "fewer thefts." Zero.
+      </p>
+      
+      <div class="testimonial animate-on-scroll">
+        <p class="testimonial__text">"I've seen people get their stuff stolen right next to me at the rail. I just smiled because I knew my phone was exactly where I left it—pressed against my back where nobody could touch it."</p>
+        <p class="testimonial__author">— Sarah M., verified customer (EDC 2025)</p>
+      </div>
+      
+      <div class="chapter-marker animate-on-scroll">
+        <span class="chapter-marker__line"></span>
+        <span class="chapter-marker__text">The Verdict</span>
+        <span class="chapter-marker__line"></span>
+      </div>
+      
+      <p class="animate-on-scroll">
+        Look, I'm not saying you <em>need</em> an anti-theft bag to enjoy a festival. Millions of people get through events every year without incident.
+      </p>
+      
+      <p class="animate-on-scroll">
+        But here's what I know: Since switching to Lunchbox, I've been to 23 festivals without a single security incident. I've stopped worrying about where my phone is. I've stopped doing the paranoid pocket-pat every time I leave a stage. 
+      </p>
+      
+      <p class="animate-on-scroll">
+        <strong>I've started actually enjoying the thing I paid hundreds of dollars to attend.</strong>
+      </p>
+      
+      <p class="animate-on-scroll">
+        That peace of mind? Worth way more than the price of a bag.
+      </p>
+      
+      <div class="author-box animate-on-scroll">
+        <div class="author-box__avatar">JT</div>
+        <div>
+          <div class="author-box__name">Jamie Torres</div>
+          <div class="author-box__title">Festival Culture Editor • 47 festivals and counting</div>
+        </div>
+      </div>
+      
+    </div>
+  </article>
+
+  <!-- Final CTA / Offer Module -->
+  <section class="offer" id="offer">
+    <div class="container">
+      <div class="offer__content animate-on-scroll">
+        <span class="offer__badge">Reader Exclusive</span>
+        <h2>ready to join the movement?</h2>
+        <p>Get the bag 2 million ravers trust. Festival season sale now live.</p>
+        
+        <div class="price-stack">
+          <div class="price-stack__original">$89</div>
+          <div class="price-stack__current">$69</div>
+        </div>
+        
+        <ul class="offer__features">
+          <li>Anti-theft phone pocket (the one that matters)</li>
+          <li>Security line approved at 500+ venues</li>
+          <li>Cut-resistant material</li>
+          <li>External hydration pocket</li>
+          <li>2-year warranty</li>
+          <li>Free shipping on orders over $50</li>
+        </ul>
+        
+        <div class="offer__cta">
+          <a href="https://lunchboxpacks.com" class="btn btn--primary btn--large">shop now — $69</a>
+        </div>
+        
+        <div class="guarantee-badge">
+          <span>🛡️</span>
+          <span>30-day money-back guarantee. No questions asked.</span>
+        </div>
+        
+        <div class="trust-badges" style="margin-top: 2rem;">
+          <span class="trust-badge">🔒 Secure checkout</span>
+          <span class="trust-badge">🚚 Free shipping</span>
+          <span class="trust-badge">⭐ 4.9/5 rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Lunchbox Packs. Made for the fam.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">This is a sponsored article.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Reading progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress').style.width = scrolled + '%';
+    });
+
+    // Animate on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

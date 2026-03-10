@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunchbox Landing Pages | Preview</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      color: var(--white);
+    }
+    
+    .preview-container {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .preview-container h1 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .preview-container p {
+      opacity: 0.7;
+      margin-bottom: 3rem;
+    }
+    
+    .page-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+    }
+    
+    .page-card {
+      background: #1a1a1a;
+      padding: 2rem;
+      text-align: left;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--white);
+      border: 1px solid #333;
+    }
+    
+    .page-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--orange);
+      background: #222;
+    }
+    
+    .page-card__type {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    
+    .page-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-card p {
+      font-size: 0.875rem;
+      opacity: 0.7;
+      margin: 0;
+    }
+    
+    .page-card__arrow {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .footer-note {
+      margin-top: 3rem;
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    <h1>lunchbox landing pages</h1>
+    <p>Conversion-optimized pages for festival season 2026</p>
+    
+    <div class="page-cards">
+      <a href="listicle.html" class="page-card">
+        <div class="page-card__type">Listicle</div>
+        <h2>7 reasons festival-goers are switching</h2>
+        <p>Scannable, social-proof heavy format. Stats, features, comparison table.</p>
+        <div class="page-card__arrow">→</div>
+      </a>
+      
+      <a href="advertorial.html" class="page-card">
+        <div class="page-card__type">Advertorial</div>
+        <h2>how one stolen phone led to a revolution</h2>
+        <p>Story-driven editorial. Personal narrative, problem/solution arc.</p>
+        <div class="page-card__arrow">→</div>
+      </a>
+    </div>
+    
+    <p class="footer-note">Based on Lunchbox Brand Guide 2024</p>
+  </div>
+</body>
+</html>
