@@ -43,16 +43,20 @@
       font-size: var(--font-size-small);
     }
     
-    .reason__visual {
-      height: 180px;
-      background: var(--dark-mid);
-      border: 1px solid var(--border);
+    .reason__image {
+      width: 100%;
+      height: auto;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
       margin-top: var(--space-md);
+      object-fit: cover;
+    }
+    
+    .reason__image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-top: var(--space-md);
+      background: var(--dark-mid);
     }
     
     .inline-cta {
@@ -131,9 +135,8 @@
         direction: ltr;
       }
       
-      .reason__visual {
+      .reason__image-container {
         margin-top: 0;
-        height: 220px;
       }
     }
   </style>
@@ -147,7 +150,7 @@
     <div class="orb orb--blue"></div>
     <div class="container">
       <span class="hero__badge">Festival Season 2026</span>
-      <h1>7 reasons festival-goers are switching to anti-theft hydration packs</h1>
+      <h1>7 reasons festival-goers are switching to lunchbox</h1>
       <p class="hero__text">Over 2 million ravers have made the switch. Here's why you should too.</p>
       <a href="#reasons" class="btn btn--primary">show me why →</a>
     </div>
@@ -181,37 +184,46 @@
   <section id="reasons" class="section--gradient">
     <div class="container container--narrow">
       
-      <!-- Reason 1 -->
+      <!-- Reason 1: Peace of Mind -->
       <div class="reason">
         <div>
           <div class="reason__number">01</div>
-          <h3>your phone stays where you can feel it</h3>
-          <p>The dedicated anti-theft phone pocket sits on your shoulder strap—against your chest, not on your back. You can feel it. Pickpockets can't reach it. It's always exactly where you left it.</p>
-          <p class="reason__highlight">→ Front-facing protection = peace of mind</p>
+          <h3>total peace of mind</h3>
+          <p>No more paranoid pocket-checks. No more hand-on-phone anxiety during the drop. The Lunchbox Hydration Pack keeps your valuables secure with anti-theft zipper clips, no external facing zippers, and a dedicated phone pocket on your shoulder strap—right where you can feel it.</p>
+          <p><strong>Zero theft reports</strong> from customers using the pack correctly. Not fewer. Zero.</p>
+          <p class="reason__highlight">→ Stop worrying. Start dancing.</p>
         </div>
-        <div class="reason__visual">📱🔒</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Black_Front.jpg?v=1750261706" alt="Lunchbox Hydration Pack - Front View" class="reason__image" loading="lazy">
+        </div>
       </div>
 
-      <!-- Reason 2 -->
+      <!-- Reason 2: Never Wait in Water Lines -->
       <div class="reason">
         <div>
           <div class="reason__number">02</div>
-          <h3>no external facing zippers</h3>
-          <p>Traditional backpacks have zippers that face outward—easy pickings. The Lunchbox Hydration Pack has no external facing zippers, period. Combined with anti-theft zipper clips, there's simply no easy way in.</p>
-          <p class="reason__highlight">→ Built with "no easy way in" as the core principle</p>
+          <h3>never wait in water lines again</h3>
+          <p>The 2L insulated hydration bladder keeps your water cold for hours. But here's the game-changer: <strong>quick-refill side pocket access</strong> means you can top up without taking off the pack or losing your spot.</p>
+          <p>While everyone else is standing in line, you're already back at the rail with a fresh 2 liters of ice cold water.</p>
+          <p class="reason__highlight">→ Refill in seconds. Stay hydrated all day.</p>
         </div>
-        <div class="reason__visual">🔐⚡</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Front_CALLOUT.jpg?v=1750261706" alt="Lunchbox Hydration Pack - Quick Refill Feature" class="reason__image" loading="lazy">
+        </div>
       </div>
 
-      <!-- Reason 3 -->
+      <!-- Reason 3: Sail Through Security -->
       <div class="reason">
         <div>
           <div class="reason__number">03</div>
-          <h3>2L no-leak hydration bladder</h3>
-          <p>Insulated to keep water cold. Quick-refill system via side pocket access means you can top up without taking the pack off or losing your spot at the rail.</p>
-          <p class="reason__highlight">→ Stay hydrated. Stay in the moment.</p>
+          <h3>sail through security lines</h3>
+          <p>Lunchbox is the <strong>Official Anti-Theft Pack Partner of Insomniac Events</strong>. Security knows the pack—they wave you through while everyone else gets their bags searched and their hydration packs questioned.</p>
+          <p>Pre-approved at 500+ venues worldwide including EDC, Ultra, and Tomorrowland. Festival compliant means no stress at the gate.</p>
+          <p class="reason__highlight">→ In the venue faster. More time for music.</p>
         </div>
-        <div class="reason__visual">💧❄️</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Black_Front.jpg?v=1750261706" alt="Lunchbox Hydration Pack - Security Approved" class="reason__image" loading="lazy">
+        </div>
       </div>
 
       <!-- CTA Break -->
@@ -220,48 +232,60 @@
         <a href="#offer" class="btn btn--primary">get yours now</a>
       </div>
 
-      <!-- Reason 4 -->
+      <!-- Reason 4: Make It Yours -->
       <div class="reason">
         <div>
           <div class="reason__number">04</div>
-          <h3>sail through security lines</h3>
-          <p>Official Anti-Theft Pack Partner of Insomniac Events. Security knows the pack—they wave you through while everyone else gets searched. Pre-approved at 500+ venues worldwide.</p>
-          <p class="reason__highlight">→ Seamless security experience</p>
+          <h3>make it yours with interchangeable skins</h3>
+          <p>Your pack should reflect your vibe. With <strong>interchangeable skins</strong>, you can swap the look without buying a new pack. Match your outfit. Rep your crew. Switch it up for every festival.</p>
+          <p>Plus: lightshow wire loops let you add LED wires for that extra glow when the sun goes down.</p>
+          <p class="reason__highlight">→ One pack, endless looks. Express yourself.</p>
         </div>
-        <div class="reason__visual">✅🎫</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Black_Front.jpg?v=1750261706" alt="Lunchbox Hydration Pack - Interchangeable Skins" class="reason__image" loading="lazy">
+        </div>
       </div>
 
-      <!-- Reason 5 -->
+      <!-- Reason 5: Join the Fam -->
       <div class="reason">
         <div>
           <div class="reason__number">05</div>
-          <h3>8L of organized storage</h3>
-          <p>16" x 10" x 5" of space with interior pockets, elastic straps for carabiners, external hand fan pocket, secure interior key ring clip, and lightshow wire loops. Everything has its place.</p>
-          <p class="reason__highlight">→ Room for everything you need, organized the way you want</p>
+          <h3>join the lunchbox fam</h3>
+          <p>When you rock a Lunchbox, you're part of something bigger. <strong>100,000+ festival-goers</strong> trust Lunchbox to protect their stuff and keep them hydrated. You'll spot the fam everywhere—at the rail, at the water station, in the campgrounds.</p>
+          <p>It's more than a pack. It's a signal that you know how to festival the right way.</p>
+          <p class="reason__highlight">→ Trusted by the fam. Join us.</p>
         </div>
-        <div class="reason__visual">🎒✨</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Black_Front.jpg?v=1750261706" alt="Lunchbox Fam at Festival" class="reason__image" loading="lazy">
+        </div>
       </div>
 
-      <!-- Reason 6 -->
+      <!-- Reason 6: Built to Last -->
       <div class="reason">
         <div>
           <div class="reason__number">06</div>
-          <h3>cut resistant, built to last</h3>
-          <p>1860D ballistic nylon. 420D diamond ripstop. YKK zippers. Anti-theft zipper clip hardware. This pack was designed to survive festival chaos—and look good doing it.</p>
-          <p class="reason__highlight">→ 1-year manufacturer warranty</p>
+          <h3>built to survive festival chaos</h3>
+          <p><strong>1860D ballistic nylon. 420D diamond ripstop. Cut-resistant material.</strong> This isn't hiking gear adapted for festivals—it's purpose-built to survive the pit, the dust, and the chaos.</p>
+          <p>The breathable cloud mesh backing keeps you cool when you're deep in the crowd. YKK zippers and anti-theft clip hardware mean nothing's breaking or getting stolen.</p>
+          <p class="reason__highlight">→ 1-year warranty. Built to last.</p>
         </div>
-        <div class="reason__visual">🛡️💪</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Front_CALLOUT.jpg?v=1750261706" alt="Lunchbox Hydration Pack - Durable Materials" class="reason__image" loading="lazy">
+        </div>
       </div>
 
-      <!-- Reason 7 -->
+      <!-- Reason 7: Make Every Experience the Best -->
       <div class="reason">
         <div>
           <div class="reason__number">07</div>
-          <h3>interchangeable skins</h3>
-          <p>Swap out the look without buying a new pack. Customize to match your fit, your crew, or your mood. The Lunchbox isn't just gear—it's part of your festival identity.</p>
-          <p class="reason__highlight">→ One pack, endless looks</p>
+          <h3>make every festival your best one yet</h3>
+          <p>Here's the truth: when you're not worried about your stuff or your hydration, <strong>you're actually present</strong>. You catch the sunrise set. You dance without checking your pockets. You feel the music instead of the anxiety.</p>
+          <p>That's what Lunchbox delivers—not just a pack, but better festival experiences. That's why 2.1 million ravers have made the switch.</p>
+          <p class="reason__highlight">→ Your next festival. Your best festival.</p>
         </div>
-        <div class="reason__visual">🎨💜</div>
+        <div class="reason__image-container">
+          <img src="https://cdn.shopify.com/s/files/1/0018/3166/5728/files/HydrationPack_Black_Front.jpg?v=1750261706" alt="Festival Experience with Lunchbox" class="reason__image" loading="lazy">
+        </div>
       </div>
 
     </div>
@@ -271,77 +295,12 @@
   <section>
     <div class="container container--narrow">
       <div class="testimonial">
-        <p class="testimonial__text">"My lunchbox fit everything I needed for each day of EDCO, but the biggest selling point was that the hydro had its own pocket—which kept the water away from my phone! The hidden zippers kept my mind at ease the entire fest."</p>
+        <p class="testimonial__text">"Love my Lunchbox! I've been using it since 2019. It's now been to a few fests, hiking, and even to Japan with me! The bladder is easy to fill up and I feel more secure using it with the zippers on my back. I recommend it to everyone."</p>
+        <p class="testimonial__author">— Verified Customer</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial__text">"My lunchbox fit everything I needed for each day of EDCO. The hidden zippers kept my mind at ease the entire fest. I was never worried about someone getting in."</p>
         <p class="testimonial__author">— Verified Customer, EDCO 2025</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison -->
-  <section class="section--gradient">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-lg);">
-        <span class="subtitle">The Difference</span>
-        <h2>regular pack vs. lunchbox hydration pack</h2>
-      </div>
-      
-      <div class="comparison">
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Regular Hydration Pack</th>
-              <th>Lunchbox Hydration Pack</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Anti-theft phone pocket</td>
-              <td class="cross">✗</td>
-              <td class="check">✓ On shoulder strap</td>
-            </tr>
-            <tr>
-              <td>External facing zippers</td>
-              <td class="cross">Yes (vulnerable)</td>
-              <td class="check">✓ None</td>
-            </tr>
-            <tr>
-              <td>Anti-theft zipper clips</td>
-              <td class="cross">✗</td>
-              <td class="check">✓ All compartments</td>
-            </tr>
-            <tr>
-              <td>Security line approved</td>
-              <td class="cross">✗</td>
-              <td class="check">✓ 500+ venues</td>
-            </tr>
-            <tr>
-              <td>No-leak insulated bladder</td>
-              <td class="cross">Sometimes leaks</td>
-              <td class="check">✓ 2L insulated</td>
-            </tr>
-            <tr>
-              <td>Quick-refill side access</td>
-              <td class="cross">✗</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>Cut resistant material</td>
-              <td class="cross">✗</td>
-              <td class="check">✓ 1860D ballistic nylon</td>
-            </tr>
-            <tr>
-              <td>Interchangeable skins</td>
-              <td class="cross">✗</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>1-year warranty</td>
-              <td class="cross">Varies</td>
-              <td class="check">✓</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
@@ -363,9 +322,9 @@
           <li>2L no-leak insulated hydration bladder</li>
           <li>Anti-theft phone pocket on shoulder strap</li>
           <li>No external facing zippers</li>
-          <li>Anti-theft zipper clips</li>
+          <li>Anti-theft zipper clips on all compartments</li>
           <li>8L storage (16" x 10" x 5")</li>
-          <li>Security line approved</li>
+          <li>Official Insomniac Partner — security line approved</li>
           <li>Cut resistant 1860D ballistic nylon</li>
           <li>Interchangeable skins</li>
           <li>1-year warranty</li>
