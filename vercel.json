@@ -12,6 +12,11 @@
     },
     {
       "source": "/",
+      "destination": "/nightmare.html",
+      "has": [{ "type": "host", "value": "nightmarefest.lunchboxpacks.com" }]
+    },
+    {
+      "source": "/",
       "destination": "/advertorial.html"
     }
   ]
