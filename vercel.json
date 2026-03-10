@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "festivalstory.lunchboxpacks.com" }],
+      "destination": "/advertorial.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "listicle.lunchboxpacks.com" }],
+      "destination": "/listicle.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    }
+  ]
+}
