@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunchbox Landing Page Editor</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e5e5e5;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { color: #fff; margin-bottom: 10px; }
+    .subtitle { color: #888; margin-bottom: 30px; }
+    
+    .auth-section {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    .auth-section label { display: block; margin-bottom: 8px; color: #aaa; }
+    .auth-section input {
+      width: 100%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #fff;
+      font-family: monospace;
+      margin-bottom: 15px;
+    }
+    .auth-section small { color: #666; display: block; margin-top: -10px; margin-bottom: 15px; }
+    
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 12px 24px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #888;
+      transition: all 0.2s;
+    }
+    .tab:hover { border-color: #555; color: #fff; }
+    .tab.active { background: #8B5CF6; border-color: #8B5CF6; color: #fff; }
+    
+    .editor-section {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .editor-section h3 {
+      color: #8B5CF6;
+      margin: 0 0 15px 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .edit-block {
+      margin-bottom: 20px;
+    }
+    .edit-block label {
+      display: block;
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .edit-block textarea,
+    .edit-block input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 15px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .edit-block textarea:focus,
+    .edit-block input[type="text"]:focus {
+      outline: none;
+      border-color: #8B5CF6;
+    }
+    .edit-block textarea { min-height: 80px; }
+    .edit-block input[type="text"] { }
+    
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #8B5CF6;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #7c4ee4; }
+    .btn-primary:disabled { background: #444; cursor: not-allowed; }
+    
+    .btn-secondary {
+      background: #333;
+      color: #fff;
+      margin-left: 10px;
+    }
+    .btn-secondary:hover { background: #444; }
+    
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+    }
+    
+    .status {
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      display: none;
+    }
+    .status.success { display: block; background: #064e3b; color: #6ee7b7; }
+    .status.error { display: block; background: #7f1d1d; color: #fca5a5; }
+    .status.loading { display: block; background: #1e3a5f; color: #93c5fd; }
+    
+    .hidden { display: none; }
+    
+    .preview-link {
+      color: #8B5CF6;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .preview-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍱 Lunchbox Landing Page Editor</h1>
+    <p class="subtitle">Edit copy and push directly to GitHub. No code required.</p>
+    
+    <div class="auth-section">
+      <label>GitHub Personal Access Token</label>
+      <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
+      <small>Needs repo write access. <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" style="color:#8B5CF6;">Create token →</a></small>
+      <button class="btn btn-primary" onclick="loadContent()">Load Pages</button>
+    </div>
+    
+    <div id="editor-content" class="hidden">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('advertorial')">Advertorial</div>
+        <div class="tab" onclick="switchTab('listicle')">Listicle</div>
+      </div>
+      
+      <!-- Advertorial Editor -->
+      <div id="advertorial-editor">
+        <p><a href="https://marloweagent-bot.github.io/lunchbox-landing-pages/advertorial.html" target="_blank" class="preview-link">Preview live page →</a></p>
+        
+        <div class="editor-section">
+          <h3>Hero Section</h3>
+          <div class="edit-block">
+            <label>Badge Text</label>
+            <input type="text" id="adv-hero-badge" data-selector=".hero__badge">
+          </div>
+          <div class="edit-block">
+            <label>Headline</label>
+            <input type="text" id="adv-hero-headline" data-selector=".hero h1">
+          </div>
+          <div class="edit-block">
+            <label>Subhead</label>
+            <input type="text" id="adv-hero-subhead" data-selector=".hero__text">
+          </div>
+        </div>
+        
+        <div class="editor-section">
+          <h3>Article Content</h3>
+          <div class="edit-block">
+            <label>Opening Paragraph (Drop Cap)</label>
+            <textarea id="adv-opening" data-selector=".drop-cap"></textarea>
+          </div>
+          <div class="edit-block">
+            <label>First Pullquote</label>
+            <textarea id="adv-pullquote1" data-selector=".pullquote:first-of-type"></textarea>
+          </div>
+          <div class="edit-block">
+            <label>Second Pullquote</label>
+            <textarea id="adv-pullquote2" data-selector=".pullquote:last-of-type"></textarea>
+          </div>
+        </div>
+        
+        <div class="editor-section">
+          <h3>Offer Section</h3>
+          <div class="edit-block">
+            <label>Offer Badge</label>
+            <input type="text" id="adv-offer-badge" data-selector=".offer__badge">
+          </div>
+          <div class="edit-block">
+            <label>Offer Headline</label>
+            <input type="text" id="adv-offer-headline" data-selector=".offer h2">
+          </div>
+          <div class="edit-block">
+            <label>Offer Subtitle</label>
+            <input type="text" id="adv-offer-subtitle" data-selector=".offer__subtitle">
+          </div>
+          <div class="edit-block">
+            <label>CTA Button Text</label>
+            <input type="text" id="adv-cta-text" data-selector=".offer__cta .btn">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Listicle Editor -->
+      <div id="listicle-editor" class="hidden">
+        <p><a href="https://marloweagent-bot.github.io/lunchbox-landing-pages/listicle.html" target="_blank" class="preview-link">Preview live page →</a></p>
+        
+        <div class="editor-section">
+          <h3>Hero Section</h3>
+          <div class="edit-block">
+            <label>Badge Text</label>
+            <input type="text" id="list-hero-badge" data-selector=".hero__badge">
+          </div>
+          <div class="edit-block">
+            <label>Headline</label>
+            <input type="text" id="list-hero-headline" data-selector=".hero h1">
+          </div>
+          <div class="edit-block">
+            <label>Subhead</label>
+            <input type="text" id="list-hero-subhead" data-selector=".hero__text">
+          </div>
+        </div>
+        
+        <div class="editor-section">
+          <h3>Reason Headlines</h3>
+          <div class="edit-block">
+            <label>Reason 1</label>
+            <input type="text" id="list-reason-1" data-selector=".reason:nth-child(1) h3">
+          </div>
+          <div class="edit-block">
+            <label>Reason 2</label>
+            <input type="text" id="list-reason-2" data-selector=".reason:nth-child(2) h3">
+          </div>
+          <div class="edit-block">
+            <label>Reason 3</label>
+            <input type="text" id="list-reason-3" data-selector=".reason:nth-child(3) h3">
+          </div>
+          <div class="edit-block">
+            <label>Reason 4</label>
+            <input type="text" id="list-reason-4" data-selector=".reason:nth-child(5) h3">
+          </div>
+          <div class="edit-block">
+            <label>Reason 5</label>
+            <input type="text" id="list-reason-5" data-selector=".reason:nth-child(6) h3">
+          </div>
+          <div class="edit-block">
+            <label>Reason 6</label>
+            <input type="text" id="list-reason-6" data-selector=".reason:nth-child(7) h3">
+          </div>
+          <div class="edit-block">
+            <label>Reason 7</label>
+            <input type="text" id="list-reason-7" data-selector=".reason:nth-child(8) h3">
+          </div>
+        </div>
+        
+        <div class="editor-section">
+          <h3>Offer Section</h3>
+          <div class="edit-block">
+            <label>Offer Badge</label>
+            <input type="text" id="list-offer-badge" data-selector=".offer__badge">
+          </div>
+          <div class="edit-block">
+            <label>Offer Headline</label>
+            <input type="text" id="list-offer-headline" data-selector=".offer h2">
+          </div>
+          <div class="edit-block">
+            <label>Offer Subtitle</label>
+            <input type="text" id="list-offer-subtitle" data-selector=".offer__subtitle">
+          </div>
+          <div class="edit-block">
+            <label>CTA Button Text</label>
+            <input type="text" id="list-cta-text" data-selector=".offer__cta .btn">
+          </div>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <button class="btn btn-primary" onclick="saveChanges()" id="save-btn">💾 Save & Push to GitHub</button>
+        <button class="btn btn-secondary" onclick="loadContent()">↻ Reload</button>
+      </div>
+      
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+
+  <script>
+    const REPO = 'marloweagent-bot/lunchbox-landing-pages';
+    const BRANCH = 'main';
+    
+    let advertorialContent = '';
+    let listicleContent = '';
+    let advertorialSha = '';
+    let listicleSha = '';
+    
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.tab:nth-child(${tab === 'advertorial' ? 1 : 2})`).classList.add('active');
+      document.getElementById('advertorial-editor').classList.toggle('hidden', tab !== 'advertorial');
+      document.getElementById('listicle-editor').classList.toggle('hidden', tab !== 'listicle');
+    }
+    
+    function showStatus(message, type) {
+      const status = document.getElementById('status');
+      status.textContent = message;
+      status.className = 'status ' + type;
+    }
+    
+    async function loadContent() {
+      const token = document.getElementById('github-token').value;
+      if (!token) {
+        alert('Please enter your GitHub token');
+        return;
+      }
+      
+      showStatus('Loading pages from GitHub...', 'loading');
+      
+      try {
+        // Load advertorial
+        const advRes = await fetch(`https://api.github.com/repos/${REPO}/contents/advertorial.html?ref=${BRANCH}`, {
+          headers: { Authorization: `token ${token}` }
+        });
+        const advData = await advRes.json();
+        advertorialContent = atob(advData.content);
+        advertorialSha = advData.sha;
+        
+        // Load listicle
+        const listRes = await fetch(`https://api.github.com/repos/${REPO}/contents/listicle.html?ref=${BRANCH}`, {
+          headers: { Authorization: `token ${token}` }
+        });
+        const listData = await listRes.json();
+        listicleContent = atob(listData.content);
+        listicleSha = listData.sha;
+        
+        // Parse and populate fields
+        populateFields();
+        
+        document.getElementById('editor-content').classList.remove('hidden');
+        showStatus('Pages loaded successfully!', 'success');
+        
+      } catch (err) {
+        showStatus('Error loading: ' + err.message, 'error');
+      }
+    }
+    
+    function populateFields() {
+      // Parse advertorial
+      const advParser = new DOMParser();
+      const advDoc = advParser.parseFromString(advertorialContent, 'text/html');
+      
+      setFieldFromDoc('adv-hero-badge', advDoc, '.hero__badge');
+      setFieldFromDoc('adv-hero-headline', advDoc, '.hero h1');
+      setFieldFromDoc('adv-hero-subhead', advDoc, '.hero__text');
+      setFieldFromDoc('adv-opening', advDoc, '.drop-cap');
+      
+      const pullquotes = advDoc.querySelectorAll('.pullquote');
+      if (pullquotes[0]) document.getElementById('adv-pullquote1').value = pullquotes[0].textContent.trim();
+      if (pullquotes[1]) document.getElementById('adv-pullquote2').value = pullquotes[1].textContent.trim();
+      
+      setFieldFromDoc('adv-offer-badge', advDoc, '.offer__badge');
+      setFieldFromDoc('adv-offer-headline', advDoc, '.offer h2');
+      setFieldFromDoc('adv-offer-subtitle', advDoc, '.offer__subtitle');
+      setFieldFromDoc('adv-cta-text', advDoc, '.offer__cta .btn');
+      
+      // Parse listicle
+      const listParser = new DOMParser();
+      const listDoc = listParser.parseFromString(listicleContent, 'text/html');
+      
+      setFieldFromDoc('list-hero-badge', listDoc, '.hero__badge');
+      setFieldFromDoc('list-hero-headline', listDoc, '.hero h1');
+      setFieldFromDoc('list-hero-subhead', listDoc, '.hero__text');
+      
+      const reasons = listDoc.querySelectorAll('.reason h3');
+      reasons.forEach((r, i) => {
+        const field = document.getElementById(`list-reason-${i + 1}`);
+        if (field) field.value = r.textContent.trim();
+      });
+      
+      setFieldFromDoc('list-offer-badge', listDoc, '.offer__badge');
+      setFieldFromDoc('list-offer-headline', listDoc, '.offer h2');
+      setFieldFromDoc('list-offer-subtitle', listDoc, '.offer__subtitle');
+      setFieldFromDoc('list-cta-text', listDoc, '.offer__cta .btn');
+    }
+    
+    function setFieldFromDoc(fieldId, doc, selector) {
+      const el = doc.querySelector(selector);
+      if (el) {
+        document.getElementById(fieldId).value = el.textContent.trim();
+      }
+    }
+    
+    function updateContentFromFields() {
+      // Update advertorial
+      const advParser = new DOMParser();
+      const advDoc = advParser.parseFromString(advertorialContent, 'text/html');
+      
+      updateDocFromField(advDoc, '.hero__badge', 'adv-hero-badge');
+      updateDocFromField(advDoc, '.hero h1', 'adv-hero-headline');
+      updateDocFromField(advDoc, '.hero__text', 'adv-hero-subhead');
+      updateDocFromField(advDoc, '.drop-cap', 'adv-opening');
+      
+      const pullquotes = advDoc.querySelectorAll('.pullquote');
+      if (pullquotes[0]) pullquotes[0].textContent = document.getElementById('adv-pullquote1').value;
+      if (pullquotes[1]) pullquotes[1].textContent = document.getElementById('adv-pullquote2').value;
+      
+      updateDocFromField(advDoc, '.offer__badge', 'adv-offer-badge');
+      updateDocFromField(advDoc, '.offer h2', 'adv-offer-headline');
+      updateDocFromField(advDoc, '.offer__subtitle', 'adv-offer-subtitle');
+      updateDocFromField(advDoc, '.offer__cta .btn', 'adv-cta-text');
+      
+      advertorialContent = '<!DOCTYPE html>\n' + advDoc.documentElement.outerHTML;
+      
+      // Update listicle
+      const listParser = new DOMParser();
+      const listDoc = listParser.parseFromString(listicleContent, 'text/html');
+      
+      updateDocFromField(listDoc, '.hero__badge', 'list-hero-badge');
+      updateDocFromField(listDoc, '.hero h1', 'list-hero-headline');
+      updateDocFromField(listDoc, '.hero__text', 'list-hero-subhead');
+      
+      const reasons = listDoc.querySelectorAll('.reason h3');
+      reasons.forEach((r, i) => {
+        const field = document.getElementById(`list-reason-${i + 1}`);
+        if (field) r.textContent = field.value;
+      });
+      
+      updateDocFromField(listDoc, '.offer__badge', 'list-offer-badge');
+      updateDocFromField(listDoc, '.offer h2', 'list-offer-headline');
+      updateDocFromField(listDoc, '.offer__subtitle', 'list-offer-subtitle');
+      updateDocFromField(listDoc, '.offer__cta .btn', 'list-cta-text');
+      
+      listicleContent = '<!DOCTYPE html>\n' + listDoc.documentElement.outerHTML;
+    }
+    
+    function updateDocFromField(doc, selector, fieldId) {
+      const el = doc.querySelector(selector);
+      const field = document.getElementById(fieldId);
+      if (el && field) {
+        el.textContent = field.value;
+      }
+    }
+    
+    async function saveChanges() {
+      const token = document.getElementById('github-token').value;
+      if (!token) {
+        alert('Please enter your GitHub token');
+        return;
+      }
+      
+      const saveBtn = document.getElementById('save-btn');
+      saveBtn.disabled = true;
+      saveBtn.textContent = 'Saving...';
+      showStatus('Pushing changes to GitHub...', 'loading');
+      
+      try {
+        updateContentFromFields();
+        
+        // Save advertorial
+        await fetch(`https://api.github.com/repos/${REPO}/contents/advertorial.html`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update advertorial copy via editor',
+            content: btoa(unescape(encodeURIComponent(advertorialContent))),
+            sha: advertorialSha,
+            branch: BRANCH
+          })
+        });
+        
+        // Save listicle
+        await fetch(`https://api.github.com/repos/${REPO}/contents/listicle.html`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update listicle copy via editor',
+            content: btoa(unescape(encodeURIComponent(listicleContent))),
+            sha: listicleSha,
+            branch: BRANCH
+          })
+        });
+        
+        showStatus('✅ Changes saved! Pages will update in ~1 minute.', 'success');
+        
+        // Reload to get new SHAs
+        setTimeout(loadContent, 2000);
+        
+      } catch (err) {
+        showStatus('Error saving: ' + err.message, 'error');
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = '💾 Save & Push to GitHub';
+      }
+    }
+  </script>
+</body>
+</html>
